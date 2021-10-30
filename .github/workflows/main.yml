@@ -14,5 +14,5 @@ jobs:
       - run: echo ${{ secrets.AWS_ENVIRONMENT }}
       - run: echo ${{ secrets.AWS_ENVIRONMENT }} > .env
       - run: npm i
-      - run: npm run sls config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      - run: npm run sls deploy -s api
+      - run: npx sls config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - run: npx sls deploy -s api
