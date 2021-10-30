@@ -11,8 +11,8 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
-      - run: echo {{ secrets.AWS_ENVIRONMENT }}
-      - run: echo {{ secrets.AWS_ENVIRONMENT }} > .env
+      - run: echo ${{ secrets.AWS_ENVIRONMENT }}
+      - run: echo ${{ secrets.AWS_ENVIRONMENT }} > .env
       - run: npm i
-      - run: npm run sls config credentials --provider aws --key {{ secrets.AWS_ACCESS_KEY_ID }} --secret {{ secrets.AWS_SECRET_ACCESS_KEY }}
+      - run: npm run sls config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - run: npm run sls deploy -s api
