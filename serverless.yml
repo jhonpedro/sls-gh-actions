@@ -1,6 +1,4 @@
 service: test-actions
-org: jhonpedro
-app: test-gs
 
 frameworkVersion: '2'
 
