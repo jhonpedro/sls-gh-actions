@@ -11,6 +11,17 @@ jobs:
       - uses: actions/setup-node@v2
         with:
           node-version: '14'
+      # https://stackoverflow.com/questions/60176044/how-do-i-use-an-env-file-with-github-actions
+      # Serverless framework depends on .env file, so we have to create it
+      - name: create env file
+        run: |
+          cat << EOF .env
+          MYSQL_HOST=${{ secrets.MYSQL_HOST }}
+          MYSQL_PORT=${{ secrets.MYSQL_PORT }}
+          MYSQL_USER=${{ secrets.MYSQL_USER }}
+          MYSQL_PASS=${{ secrets.MYSQL_PASS }}
+          MYSQL_DB=${{ secrets.MYSQL_DB }}
+          EOF
       - run: npm i
       - run: npx sls config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - run: npx sls deploy -s api --verbose
