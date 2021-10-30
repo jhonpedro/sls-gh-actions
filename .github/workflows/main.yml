@@ -22,8 +22,9 @@ jobs:
           MYSQL_PASS=${{ secrets.MYSQL_PASS }}
           MYSQL_DB=${{ secrets.MYSQL_DB }}
           EOF
-      - name: Install deps and setup aws credentials
+      - name: Install deps
         run: npm i
+      - name: Setup AWS credentials
         run: npx sls config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Deploy to AWS
         run: npx sls deploy -s api --verbose
