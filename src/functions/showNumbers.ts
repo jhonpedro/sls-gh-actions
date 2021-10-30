@@ -9,7 +9,7 @@ export const handler = async (
 ): Promise<{ statusCode: number; body: string }> => {
 	await createConnection()
 
-	const numbersRepository = getRepository('NumberEntity')
+	const numbersRepository = getRepository('numbers')
 
 	const numbers = await numbersRepository.find()
 

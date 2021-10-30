@@ -9,7 +9,7 @@ export const handler = async (
 ): Promise<{ statusCode: number; body: string }> => {
 	await createConnection()
 
-	const numberRepository = getRepository('NumberEntity')
+	const numberRepository = getRepository('numbers')
 
 	const numberToSave = parseInt(JSON.parse(event.body).number, 10)
 
