@@ -1,0 +1,14 @@
+createNumber:
+  handler: src/functions/createNumber.handler
+  events:
+    - http:
+        path: /create
+        method: post
+        cors: true
+showNumber:
+  handler: src/functions/showNumbers.handler
+  events:
+    - http:
+        path: /
+        method: get
+        cors: true

@@ -1,0 +1,39 @@
+service: test-actions
+org: jhonpedro
+app: test-gs
+
+frameworkVersion: '2'
+
+useDotenv: true
+
+provider:
+  stage: ${opt:stage, 'dev'}
+  memorySize: 128
+  timeout: 15
+  name: aws
+  runtime: nodejs14.x
+  lambdaHashingVersion: 20201221
+  environment:
+    MYSQL_HOST: ${env:MYSQL_HOST, 'empty'}
+    MYSQL_PORT: ${env:MYSQL_PORT, 'empty'}
+    MYSQL_USER: ${env:MYSQL_USER, 'empty'}
+    MYSQL_PASS: ${env:MYSQL_PASS, 'empty'}
+    MYSQL_DB: ${env:MYSQL_DB, 'empty'}
+
+custom:
+  serverless-offline:
+    httpPort: 8000
+  webpack:
+    webpackConfig: 'webpack.config.js'
+    includeModules:
+      forceInclude:
+        - mysql2
+    packager: 'npm'
+    excludeFiles: src/**/*.test.js
+
+plugins:
+  - serverless-webpack
+  - serverless-offline
+
+functions:
+  - ${file(./src/functions/@functions.yml)}
