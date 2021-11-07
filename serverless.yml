@@ -26,6 +26,7 @@ custom:
     includeModules:
       forceInclude:
         - mysql2
+        - sequelize
     packager: 'npm'
     excludeFiles: src/**/*.test.js
 

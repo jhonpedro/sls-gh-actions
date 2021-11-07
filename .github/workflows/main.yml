@@ -27,6 +27,6 @@ jobs:
       - name: Setup AWS credentials
         run: npx sls config credentials --provider aws --key ${{ secrets.AWS_ACCESS_KEY_ID }} --secret ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       - name: Run migrations
-        run: npm run sql migration:run
+        run: npm run sql db:migrate
       - name: Deploy to AWS
         run: npx sls deploy -s api --verbose

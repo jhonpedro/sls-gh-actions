@@ -7,7 +7,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"prepare": "husky install",
 		"sls": "serverless",
-		"sql": "node --require ts-node/register ./node_modules/typeorm/cli.js"
+		"sql": "npx sequelize-cli"
 	},
 	"keywords": [],
 	"author": "",
@@ -18,9 +18,11 @@
 		"@typescript-eslint/eslint-plugin": "^5.2.0",
 		"@typescript-eslint/parser": "^5.2.0",
 		"aws-lambda": "^1.0.6",
+		"dotenv": "^10.0.0",
 		"eslint": "^8.1.0",
 		"husky": "^7.0.4",
 		"lint-staged": "^11.2.6",
+		"sequelize-cli": "^6.3.0",
 		"serverless": "^2.64.1",
 		"serverless-offline": "^8.2.0",
 		"serverless-webpack": "^5.5.5",
@@ -37,7 +39,6 @@
 	},
 	"dependencies": {
 		"mysql2": "^2.3.2",
-		"reflect-metadata": "^0.1.13",
-		"typeorm": "^0.2.38"
+		"sequelize": "^6.6.5"
 	}
 }
